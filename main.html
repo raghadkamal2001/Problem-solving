@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>data structure</h1>
+    <script>
+        //q1
+// const stack = [];
+
+// // Push: Add items
+// stack.push(10); 
+// stack.push(20);
+// stack.push("Raghad") 
+
+// console.log(stack);
+
+// // Pop: Remove the top item
+// const poppedItem = stack.pop(); // poppedItem: 20, stack: [10]
+// console.log(stack);
+// // Peek: See the top item without removing it
+// const topItem = stack[stack.length - 1]; // topItem: 10
+// console.log(stack);
+// // isEmpty: Check if the stack is empty
+// const isEmpty = stack.length === 0; // false
+
+// console.log(stack);
+
+// function size() {
+//     return stack.length;
+// }
+// console.log(size);
+
+
+
+
+
+
+
+
+let queue = [];
+
+
+queue.push(10); 
+queue.push(20);
+queue.push("Raghad") //using stack
+queue.push("Yaman") 
+
+console.log(queue);
+
+
+function enqueue(item) {
+    queue.push(item);
+}
+
+
+function dequeue() {
+    if (queue.length > 0) {
+        return queue.shift();
+    } else {
+        return "The queue is empty!";
+    }
+}
+
+function isEmpty() {
+    return queue.length === 0;
+}
+
+function size() {
+    return queue.length;
+}
+
+enqueue("sara");
+enqueue(24);
+enqueue(34);
+
+console.log(queue);
+
+console.log(dequeue()); 
+console.log(size());
+
+
+
+function sumArrayRecursive(arr) {
+    // Base case: if the array is empty, return 0
+    if (arr.length === 0) {
+        return 0;
+    }
+    // Recursive case: add the first element to the sum of the rest of the array
+    return arr[0] + sumArrayRecursive(arr.slice(1));
+}
+
+// Example usage:
+let arr = [2, 1, 6, 5, 2];
+let result = sumArrayRecursive(arr);
+console.log("Sum of the array:", result); 
+
+
+
+class Node {
+    constructor(value) {
+        this.value = value; // Value of the node
+        this.next = null;  // Pointer to the next node
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null; // Head of the linked list
+    }
+
+    // Add a node to the end of the linked list
+    append(value) {
+        const newNode = new Node(value);
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    // Print the linked list
+    print() {
+        let current = this.head;
+        let result = [];
+        while (current) {
+            result.push(current.value);
+            current = current.next;
+        }
+        console.log(result.join(" -> "));
+    }
+
+    // Reverse the linked list
+    reverse() {
+        let prev = null;
+        let curr = this.head;
+        while (curr) {
+            let next = curr.next; // Store the next node
+            curr.next = prev;    // Reverse the pointer
+            prev = curr;         // Move prev and curr one step forward
+            curr = next;
+        }
+        this.head = prev; // Update the head to the new front of the list
+    }
+}
+
+// Example usage:
+let list = new LinkedList();
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+
+console.log("Original Linked List:");
+list.print(); // Output: 1 -> 2 -> 3 -> 4
+
+list.reverse();
+
+console.log("Reversed Linked List:");
+list.print(); // Output: 4 -> 3 -> 2 -> 1
+
+
+
+
+class Node {
+    constructor(value) {
+        this.value = value; // Value of the node
+        this.next = null;  // Pointer to the next node
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null; // Head of the linked list
+    }
+
+    // Add a node to the end of the linked list
+    append(value) {
+        const newNode = new Node(value);
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    // Print the linked list
+    print() {
+        let current = this.head;
+        let result = [];
+        while (current) {
+            result.push(current.value);
+            current = current.next;
+        }
+        console.log(result.join(" -> "));
+    }
+
+    // Delete the middle node and return it
+    deleteMiddle() {
+        if (!this.head || !this.head.next) {
+            // If the list is empty or has only one node, there's no middle node
+            return null;
+        }
+
+        let slow = this.head;
+        let fast = this.head;
+        let prev = null; // Pointer to the node before the middle node
+
+        // Move fast two steps and slow one step at a time
+        while (fast && fast.next) {
+            fast = fast.next.next;
+            prev = slow;
+            slow = slow.next;
+        }
+
+        // Now, slow is at the middle node
+        // Delete the middle node by updating the next pointer of the previous node
+        prev.next = slow.next;
+
+        // Return the deleted middle node
+        return slow;
+    }
+}
+
+// Example usage:
+let list = new LinkedList();
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+list.append(5);
+
+console.log("Original Linked List:");
+list.print(); // Output: 1 -> 2 -> 3 -> 4 -> 5
+
+let deletedNode = list.deleteMiddle();
+console.log("Deleted Middle Node:", deletedNode ? deletedNode.value : null); // Output: 3
+
+console.log("Linked List after deleting the middle node:");
+list.print(); // Output: 1 -> 2 -> 4 -> 5
+
+
+    </script>
+</body>
+</html>
